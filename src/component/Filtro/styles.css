@@ -20,7 +20,7 @@
 
 .container-filtro button {
   background-color: transparent;
-  color: var(--cinza-claro);
+  color: var(--cinza-medio);
   border: none;
   font-size: 18px;
   font-family: var(--fonte);
