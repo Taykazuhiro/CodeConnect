@@ -41,31 +41,40 @@ function App() {
     setFilterData(sortData);
   }, [dados, searchBar, sort]);
 
+  const clearFilters = () => {
+    setSearchBar("");
+    setSort("");
+  };
+
   return (
     <div className="container">
       <Sidebar />
       <div>
-        <BarraDePesquisa setSearchBar={setSearchBar} />
-        {searchBar ? <Filtro categoria={searchBar} /> : null}
+        <BarraDePesquisa setSearchBar={setSearchBar} searchBar={searchBar} />
+        {searchBar ? (
+          <Filtro categoria={searchBar} reset={clearFilters} />
+        ) : null}
         <Ordenacao activeSort={sort} setSort={setSort} />
         <ul className="lista-cards">
-          {filterData.length > 0
-            ? filterData.map((item, index) => (
-                <li key={index}>
-                  <Card
-                    id={item.id}
-                    imagemUrl={item.imagem_capa}
-                    titulo={item.titulo}
-                    resumo={item.resumo}
-                    tags={item.tags}
-                    codigo={item.linhas_de_codigo}
-                    compartilhamentos={item.compartilhamentos}
-                    comentarios={item.comentarios}
-                    usuario={item.usuario}
-                  />
-                </li>
-              ))
-            : null}
+          {filterData.length > 0 ? (
+            filterData.map((item, index) => (
+              <li key={index}>
+                <Card
+                  id={item.id}
+                  imagemUrl={item.imagem_capa}
+                  titulo={item.titulo}
+                  resumo={item.resumo}
+                  tags={item.tags}
+                  codigo={item.linhas_de_codigo}
+                  compartilhamentos={item.compartilhamentos}
+                  comentarios={item.comentarios}
+                  usuario={item.usuario}
+                />
+              </li>
+            ))
+          ) : (
+            <p>Nenhum post encontrado </p>
+          )}
         </ul>
       </div>
     </div>

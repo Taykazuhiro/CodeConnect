@@ -1,12 +1,10 @@
 import "./styles.css";
 
-export default function Filtro({ categoria }) {
+export default function Filtro({ categoria, reset }) {
   return (
     <section className="container-filtro">
-      <ul>
-        <li>{categoria}</li>
-      </ul>
-      <button>Limpar tudo</button>
+      <ul>{categoria && <li>{categoria}</li>}</ul>
+      {categoria && <button onClick={reset}>Limpar filtros</button>}
     </section>
   );
 }

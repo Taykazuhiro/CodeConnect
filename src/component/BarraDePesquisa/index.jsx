@@ -1,6 +1,6 @@
 import "./styles.css";
 
-export default function BarraDePesquisa({ setSearchBar }) {
+export default function BarraDePesquisa({ setSearchBar, searchBar }) {
   const clicking = (e) => {
     setSearchBar(e.target.value);
   };
@@ -11,6 +11,7 @@ export default function BarraDePesquisa({ setSearchBar }) {
       placeholder="Digite o que você procura"
       className="barra-pesquisa"
       onChange={clicking}
+      value={searchBar}
     />
   );
 }
